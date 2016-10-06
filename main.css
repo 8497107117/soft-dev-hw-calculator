@@ -10,3 +10,9 @@
     text-align: center;
     padding-top: 3vw;
 }
+.calculator .answer {
+    text-align: right;
+    font-size: 1.5em;
+    padding-top: 6vw;
+    padding-right: 2vw;
+}
