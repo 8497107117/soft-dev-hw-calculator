@@ -6,7 +6,8 @@
     margin: auto;
 }
 .calculator .header {
-    font: 2em bold;
+    font-size: 2em;
+    font-weight: bold;
     text-align: center;
     padding-top: 3vw;
 }
@@ -15,4 +16,19 @@
     font-size: 1.5em;
     padding-top: 6vw;
     padding-right: 2vw;
+}
+.calculator .bases {
+    text-align: left;
+    padding: 2vw 2vw 0 2vw;
+}
+.calculator .base {
+    font-size: 1.5em;
+    padding-top: 1vw;
+}
+.calculator .base-name {
+    display: inline;
+}
+.calculator .base-answer {
+    float: right;
+    padding-left: 1vw;
 }
