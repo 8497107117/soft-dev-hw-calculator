@@ -5,52 +5,53 @@ body {
     border: 5px solid black;
     border-radius: 20px;
     width: 40vw;
-    height: 85vh;
+    height: 80vh;
     margin: auto;
 }
 .calculator .header {
     font-size: 2em;
     font-weight: bold;
     text-align: center;
-    padding-top: 3vw;
+    padding-top: 3%;
 }
 .calculator .answer {
     text-align: right;
     font-size: 1.5em;
-    padding-top: 6vw;
-    padding-right: 2vw;
+    padding-top: 10%;
+    padding-right: 2%;
 }
 .calculator .bases {
     text-align: left;
-    padding: 2vw 2vw 2vw 2vw;
+    padding: 6% 2% 2% 2%;
 }
 .calculator .base {
     font-size: 1.5em;
-    padding-top: 1vw;
+    padding-top: 1%;
 }
 .calculator .base .base-name {
     display: inline;
 }
 .calculator .base .base-answer {
     float: right;
-    padding-left: 1vw;
 }
 .calculator .buttons {
     text-align: center;
+    padding-top: 5%;
+    height: 50%;
 }
 .calculator .buttons .row-buttons {
-    padding: 0.5vw 0 0.5vw 0;
-    height: 6vw;
+    padding: 3% 0 3% 0;
+    height: 15%;
 }
 .calculator .buttons .row-buttons .button{
     display: inline-block;
     vertical-align: middle;
-    width: 4.5vw;
-    height: 4.5vw;
+    width: 12%;
+    height: 100%;
     border: 5px solid black;
     border-radius: 10px;
 }
 .calculator .buttons .row-buttons .button .button-content {
     font-size: 1em;
-    padding-top: 1.5vw;
+    padding-top: 40%;
 }
