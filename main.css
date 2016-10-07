@@ -4,29 +4,29 @@ body {
 .calculator {
     border: 5px solid black;
     border-radius: 20px;
-    width: 40vw;
-    height: 80vh;
+    width: 40%;
+    height: 80%;
     margin: auto;
 }
 .calculator .header {
     font-size: 2em;
     font-weight: bold;
     text-align: center;
-    padding-top: 3%;
+    margin-top: 5%;
 }
 .calculator .answer {
     text-align: right;
     font-size: 1.5em;
-    padding-top: 10%;
-    padding-right: 2%;
+    margin-top: 10%;
+    margin-right: 2%;
 }
 .calculator .bases {
     text-align: left;
-    padding: 6% 2% 2% 2%;
+    margin: 6% 2% 2% 2%;
 }
 .calculator .base {
     font-size: 1.5em;
-    padding-top: 1%;
+    margin-top: 2%;
 }
 .calculator .base .base-name {
     display: inline;
@@ -36,22 +36,20 @@ body {
 }
 .calculator .buttons {
     text-align: center;
-    padding-top: 5%;
-    height: 50%;
+    margin-top: 5%;
 }
 .calculator .buttons .row-buttons {
-    padding: 3% 0 3% 0;
-    height: 15%;
+    margin: 2% 0 2% 0;
 }
 .calculator .buttons .row-buttons .button{
     display: inline-block;
     vertical-align: middle;
     width: 12%;
-    height: 100%;
     border: 5px solid black;
     border-radius: 10px;
+    margin: 0 1% 0 1%
 }
 .calculator .buttons .row-buttons .button .button-content {
     font-size: 1em;
-    padding-top: 40%;
+    padding: 20% 0 20% 0;
 }
