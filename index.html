@@ -1,135 +1,152 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Calculator</title>
-        <link rel="icon" type="image/x-icon" href="assets/calculator-icon.png">
-        <link rel="stylesheet" type="text/css" href="assets/main.css">
-    </head>
-    <body>
-        <div class="calculator">
-            <div class="header">Calculator</div>
-            <div class="answer">0</div>
-            <div class="bases">
-                <div class="base">
-                    <div class="base-name">Hex</div>
-                    <div class="base-answer">0</div>
+<html ng-app="Calculator">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="author" content="Taku">
+    <meta name="keywords" content="calculator">
+    <meta name="description" content="soft-dev-hw-calculator">
+    <meta name="application-name" content="calculator">
+    <meta property="og:title" content="Calculator">
+    <meta property="og:site_name" content="">
+    <meta property="og:type" content="">
+    <meta property="og:imgae" content="public/assets/calculator-icon.png">
+    <meta property="og:url" content="">
+    <meta property="og:description" content="soft-dev-hw-calculator">
+    <meta property="og:locale" content="zh_TW">
+
+    <script src="build/bundle.js"></script>
+    <link rel="icon" type="image/x-icon" href="public/assets/calculator-icon.png">
+    <link rel="stylesheet" type="text/css" href="public/assets/main.css">
+</head>
+
+<body>
+    <div class="calculator">
+        <div class="header">Calculator</div>
+        <div class="answer">0</div>
+        <div class="bases">
+            <div class="base">
+                <div class="base-name">Hex</div>
+                <div class="base-answer">0</div>
+            </div>
+            <div class="base">
+                <div class="base-name">DEC</div>
+                <div class="base-answer">0</div>
+            </div>
+            <div class="base">
+                <div class="base-name">OCT</div>
+                <div class="base-answer">0</div>
+            </div>
+            <div class="base">
+                <div class="base-name">BIN</div>
+                <div class="base-answer">0</div>
+            </div>
+        </div>
+        <div class="buttons">
+            <div class="row-buttons">
+                <div class="button">
+                    <div class="button-content">&nbsp;</div>
                 </div>
-                <div class="base">
-                    <div class="base-name">DEC</div>
-                    <div class="base-answer">0</div>
+                <div class="button">
+                    <div class="button-content">Mod</div>
                 </div>
-                <div class="base">
-                    <div class="base-name">OCT</div>
-                    <div class="base-answer">0</div>
+                <div class="button">
+                    <div class="button-content">CE</div>
                 </div>
-                <div class="base">
-                    <div class="base-name">BIN</div>
-                    <div class="base-answer">0</div>
+                <div class="button">
+                    <div class="button-content">C</div>
+                </div>
+                <div class="button">
+                    <div class="button-content">&#8594</div>
+                </div>
+                <div class="button">
+                    <div class="button-content">%</div>
                 </div>
             </div>
-            <div class="buttons">
-                <div class="row-buttons">
-                    <div class="button">
-                        <div class="button-content">&nbsp;</div>
-                    </div>
-                    <div class="button">
-                        <div class="button-content">Mod</div>
-                    </div>
-                    <div class="button">
-                        <div class="button-content">CE</div>
-                    </div>
-                    <div class="button">
-                        <div class="button-content">C</div>
-                    </div>
-                    <div class="button">
-                        <div class="button-content">&#8594</div>
-                    </div>
-                    <div class="button">
-                        <div class="button-content">%</div>
-                    </div>
+            <div class="row-buttons">
+                <div class="button">
+                    <div class="button-content">A</div>
                 </div>
-                <div class="row-buttons">
-                    <div class="button">
-                        <div class="button-content">A</div>
-                    </div>
-                    <div class="button">
-                        <div class="button-content">B</div>
-                    </div>
-                    <div class="button">
-                        <div class="button-content">7</div>
-                    </div>
-                    <div class="button">
-                        <div class="button-content">8</div>
-                    </div>
-                    <div class="button">
-                        <div class="button-content">9</div>
-                    </div>
-                    <div class="button">
-                        <div class="button-content">x</div>
-                    </div>
+                <div class="button">
+                    <div class="button-content">B</div>
                 </div>
-                <div class="row-buttons">
-                    <div class="button">
-                        <div class="button-content">C</div>
-                    </div>
-                    <div class="button">
-                        <div class="button-content">D</div>
-                    </div>
-                    <div class="button">
-                        <div class="button-content">4</div>
-                    </div>
-                    <div class="button">
-                        <div class="button-content">5</div>
-                    </div>
-                    <div class="button">
-                        <div class="button-content">6</div>
-                    </div>
-                    <div class="button">
-                        <div class="button-content">-</div>
-                    </div>
+                <div class="button">
+                    <div class="button-content">7</div>
                 </div>
-                <div class="row-buttons">
-                    <div class="button">
-                        <div class="button-content">E</div>
-                    </div>
-                    <div class="button">
-                        <div class="button-content">F</div>
-                    </div>
-                    <div class="button">
-                        <div class="button-content">1</div>
-                    </div>
-                    <div class="button">
-                        <div class="button-content">2</div>
-                    </div>
-                    <div class="button">
-                        <div class="button-content">3</div>
-                    </div>
-                    <div class="button">
-                        <div class="button-content">+</div>
-                    </div>
+                <div class="button">
+                    <div class="button-content">8</div>
                 </div>
-                <div class="row-buttons">
-                    <div class="button">
-                        <div class="button-content">&nbsp;</div>
-                    </div>
-                    <div class="button">
-                        <div class="button-content">&nbsp;</div>
-                    </div>
-                    <div class="button">
-                        <div class="button-content">&#177</div>
-                    </div>
-                    <div class="button">
-                        <div class="button-content">0</div>
-                    </div>
-                    <div class="button">
-                        <div class="button-content">&nbsp;</div>
-                    </div>
-                    <div class="button">
-                        <div class="button-content">=</div>
-                    </div>
+                <div class="button">
+                    <div class="button-content">9</div>
+                </div>
+                <div class="button">
+                    <div class="button-content">x</div>
+                </div>
+            </div>
+            <div class="row-buttons">
+                <div class="button">
+                    <div class="button-content">C</div>
+                </div>
+                <div class="button">
+                    <div class="button-content">D</div>
+                </div>
+                <div class="button">
+                    <div class="button-content">4</div>
+                </div>
+                <div class="button">
+                    <div class="button-content">5</div>
+                </div>
+                <div class="button">
+                    <div class="button-content">6</div>
+                </div>
+                <div class="button">
+                    <div class="button-content">-</div>
+                </div>
+            </div>
+            <div class="row-buttons">
+                <div class="button">
+                    <div class="button-content">E</div>
+                </div>
+                <div class="button">
+                    <div class="button-content">F</div>
+                </div>
+                <div class="button">
+                    <div class="button-content">1</div>
+                </div>
+                <div class="button">
+                    <div class="button-content">2</div>
+                </div>
+                <div class="button">
+                    <div class="button-content">3</div>
+                </div>
+                <div class="button">
+                    <div class="button-content">+</div>
+                </div>
+            </div>
+            <div class="row-buttons">
+                <div class="button">
+                    <div class="button-content">&nbsp;</div>
+                </div>
+                <div class="button">
+                    <div class="button-content">&nbsp;</div>
+                </div>
+                <div class="button">
+                    <div class="button-content">&#177</div>
+                </div>
+                <div class="button">
+                    <div class="button-content">0</div>
+                </div>
+                <div class="button">
+                    <div class="button-content">&nbsp;</div>
+                </div>
+                <div class="button">
+                    <div class="button-content">=</div>
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>

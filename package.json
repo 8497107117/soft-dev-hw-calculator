@@ -1,0 +1,24 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "soft-dev-hw-calculator",
+  "main": "public/calculator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "author": "Taku",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/8497107117/soft-dev-hw-calculator.git"
+  },
+  "bugs": {
+    "url": "https://github.com/8497107117/soft-dev-hw-calculator/issues"
+  },
+  "homepage": "https://github.com/8497107117/soft-dev-hw-calculator#readme",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "webpack": "^1.13.3"
+  }
+}
