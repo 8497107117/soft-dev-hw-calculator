@@ -8,5 +8,5 @@ var MainConfig = function ($locationProvider) {
 angular.module('Calculator', [])
     .config(['$locationProvider', MainConfig]);
 
-require('./calculator.controller.js');
 require('./calculator.service.js');
+require('./calculator.controller.js');
