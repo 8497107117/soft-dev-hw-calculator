@@ -10,15 +10,18 @@ var CalculatorController = function (CalculatorService) {
     self.dec = 0;
 
     self.enterOperand = function (op) {
-        self.answer = Cal.enterOperand(op);
+        Cal.enterOperand(op);
+        self.answer = Cal.updateExpression();
     }
 
     self.enterOperator = function (op) {
-        self.answer = Cal.enterOperator(op);
+        Cal.enterOperator(op);
+        self.answer = Cal.updateExpression();
     }
 
     self.backspace = function () {
-        self.answer = Cal.backspace();
+        Cal.backspace();
+        self.answer = Cal.updateExpression();
     }
 
     self.calculate = function () {

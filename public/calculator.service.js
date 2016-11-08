@@ -2,62 +2,120 @@
 var angular = require('angular');
 
 var CalculatorService = function () {
-    var expression = '';
-    var state = 'operator';
-    var input = '';
-    var answer = 0;
+    var expression = '0';
+    var operand = [];
+    var operator = [];
+    var state = 'operand';
+    var input = '0';
+    var answer = '0';
+    var isCalculated = false;
 
     var self = this;
+
+    self.updateExpression = function () {
+        if (operand[0] == undefined) {
+            return input;
+        }
+        expression = operand[0];
+        for (var i = 0; i < operator.length; i++) {
+            if (operand[i + 1] != undefined) {
+                expression = expression + operator[i] + operand[i + 1];
+            }
+            else {
+                expression += operator[i];
+            }
+        }
+
+        return expression + input;
+    }
 
     self.enterOperand = function (op) {
         // change state
         if (state == 'operator') {
             state = 'operand';
-            expression += input;
-            input = '';
+            operator.push(input);
+            input = '0';
         }
         // input
-        if (state == 'operand') {
-            input += op;
+        if (op != 'neg') {
+            if (isCalculated) {
+                input = '0';
+                isCalculated = false;
+            }
+            // avoid from starting with 0 || first legal input
+            if (input == '0') {
+                input = op;
+            }
+            else {
+                input += op;
+            }
         }
-
-        return expression + input;
+        // negative
+        else if (op == 'neg') {
+            // do nothing
+            if (input == '0') {
+                ;
+            }
+            // - -> + 
+            else if (input.indexOf('-') < 0) {
+                input = '-' + input;
+            }
+            // + -> -
+            else {
+                input = input.substr(1, input.length - 1);
+            }
+        }
+        // update expression to view        
+        self.updateExpression();
     }
 
     self.enterOperator = function (op) {
+        // use last answer to be operand
+        if (isCalculated) {
+            isCalculated = false;
+        }
         // change state
         if (state == 'operand') {
             state = 'operator';
-            expression += input;
+            operand.push(input);
             input = '';
         }
         // input
-        if (state == 'operator') {
-            input = op;
-        }
-
-        return expression + input;
+        input = op;
+        // update expression to view
+        self.updateExpression();
     }
 
     self.backspace = function () {
         // only backspace the operand
-        if (state == 'operand') {
+        if (state == 'operand' && input.length > 0) {
             input = input.substr(0, input.length - 1);
         }
-        
-        return expression + input;
+        // check state
+        if (state == 'operand' && input.length == 0) {
+            state == 'operator';
+            input = expression.substr(expression.length - 1, 1);
+            expression = expression.substr(0, expression.length - 1);
+        }
+        // update expression to view
+        self.updateExpression();
     }
 
     self.calculate = function () {
         // change state
         if (state == 'operand') {
-            state = 'operator';
-            expression += input;
+            operand.push(input);
         }
-        input = '';
+        state = 'operand';
+        // update expression to view
+        self.updateExpression();
         // answer & clear
-        answer = eval(expression);
-        expression = answer.toString();
+        answer = eval(expression).toString();
+        operand = [];
+        operator = [];
+        expression = answer;
+        isCalculated = true;
+        input = answer;
 
         return answer;
     }
