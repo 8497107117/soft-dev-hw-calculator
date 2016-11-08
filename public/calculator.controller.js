@@ -17,6 +17,10 @@ var CalculatorController = function (CalculatorService) {
         self.answer = Cal.enterOperator(op);
     }
 
+    self.backspace = function () {
+        self.answer = Cal.backspace();
+    }
+
     self.calculate = function () {
         self.answer = Cal.calculate();
         self.dec = self.answer;

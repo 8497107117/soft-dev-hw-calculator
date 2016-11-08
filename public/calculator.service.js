@@ -39,6 +39,15 @@ var CalculatorService = function () {
         return expression + input;
     }
 
+    self.backspace = function () {
+        // only backspace the operand
+        if (state == 'operand') {
+            input = input.substr(0, input.length - 1);
+        }
+        
+        return expression + input;
+    }
+
     self.calculate = function () {
         // change state
         if (state == 'operand') {
