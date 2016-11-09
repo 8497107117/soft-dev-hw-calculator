@@ -95,7 +95,7 @@ var CalculatorService = function () {
                 input = tmp == undefined ? '' : tmp;
             }
             // first operand
-            else{
+            else {
                 input = '0';
             }
         }
@@ -118,6 +118,10 @@ var CalculatorService = function () {
         input = answer;
 
         return answer;
+    }
+
+    self.changeRadix = function (s, radix) {
+        return (+s).toString(radix);
     }
 
     return self;

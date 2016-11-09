@@ -8,6 +8,9 @@ var CalculatorController = function (CalculatorService) {
 
     self.answer = Cal.updateExpression();
     self.dec = self.answer;
+    self.hex = Cal.changeRadix(self.answer, 16);
+    self.oct = Cal.changeRadix(self.answer, 8);
+    self.bin = Cal.changeRadix(self.answer, 2);
 
     self.enterOperand = function (op) {
         Cal.enterOperand(op);
@@ -27,6 +30,9 @@ var CalculatorController = function (CalculatorService) {
     self.calculate = function () {
         self.answer = Cal.calculate();
         self.dec = self.answer;
+        self.hex = Cal.changeRadix(self.answer, 16);
+        self.oct = Cal.changeRadix(self.answer, 8);
+        self.bin = Cal.changeRadix(self.answer, 2);
     }
 }
 
