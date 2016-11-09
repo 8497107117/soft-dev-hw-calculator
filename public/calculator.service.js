@@ -65,8 +65,6 @@ var CalculatorService = function () {
                 input = input.substr(1, input.length - 1);
             }
         }
-        // update expression to view        
-        self.updateExpression();
     }
 
     self.enterOperator = function (op) {
@@ -82,8 +80,6 @@ var CalculatorService = function () {
         }
         // input
         input = op;
-        // update expression to view
-        self.updateExpression();
     }
 
     self.backspace = function () {
@@ -92,13 +88,17 @@ var CalculatorService = function () {
             input = input.substr(0, input.length - 1);
         }
         // check state
-        if (state == 'operand' && input.length == 0) {
-            state == 'operator';
-            input = expression.substr(expression.length - 1, 1);
-            expression = expression.substr(0, expression.length - 1);
+        if (state == 'operand' && (input.length == 0 || input == '-')) {
+            if (operand.length > 0) {
+                state = 'operator';
+                var tmp = operator.pop();
+                input = tmp == undefined ? '' : tmp;
+            }
+            // first operand
+            else{
+                input = '0';
+            }
         }
-        // update expression to view
-        self.updateExpression();
     }
 
     self.calculate = function () {

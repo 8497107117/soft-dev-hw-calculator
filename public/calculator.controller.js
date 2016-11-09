@@ -6,8 +6,8 @@ var CalculatorController = function (CalculatorService) {
 
     var Cal = CalculatorService;
 
-    self.answer = '0';
-    self.dec = 0;
+    self.answer = Cal.updateExpression();
+    self.dec = self.answer;
 
     self.enterOperand = function (op) {
         Cal.enterOperand(op);
