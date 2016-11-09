@@ -12,6 +12,31 @@ var CalculatorService = function () {
 
     var self = this;
 
+    self.clearC = function () {
+        // only clearC the operand
+        if (state == 'operand') {
+            if (operand.length > 0) {
+                state = 'operator';
+                var tmp = operator.pop();
+                input = tmp == undefined ? '' : tmp;
+            }
+            // first operand
+            else {
+                input = '0';
+            }
+        }
+    }
+
+    self.clearCE = function () {
+        expression = '0';
+        operand = [];
+        operator = [];
+        state = 'operand';
+        input = '0';
+        answer = '0';
+        isCalculated = false;
+    }
+
     self.updateExpression = function () {
         if (operand[0] == undefined) {
             return input;
