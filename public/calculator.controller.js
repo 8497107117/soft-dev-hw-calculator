@@ -6,6 +6,7 @@ var CalculatorController = function (CalculatorService) {
 
     var Cal = CalculatorService;
 
+    // Clear
     self.clearC = function () {
         Cal.clearC();
         self.answer = Cal.updateExpression();
@@ -19,12 +20,11 @@ var CalculatorController = function (CalculatorService) {
         self.oct = Cal.changeRadix(self.answer, 8);
         self.bin = Cal.changeRadix(self.answer, 2);
     }
-
     // initiallize
     self.clearCE();
-
-    self.enterOperand = function (op) {
-        Cal.enterOperand(op);
+    // Input
+    self.enterOperand = function (op, mode) {
+        Cal.enterOperand(op, mode);
         self.answer = Cal.updateExpression();
     }
 
@@ -39,11 +39,25 @@ var CalculatorController = function (CalculatorService) {
     }
 
     self.calculate = function () {
-        self.answer = Cal.calculate();
-        self.dec = self.answer;
-        self.hex = Cal.changeRadix(self.answer, 16);
-        self.oct = Cal.changeRadix(self.answer, 8);
-        self.bin = Cal.changeRadix(self.answer, 2);
+        self.dec = Cal.calculate(self.mode);
+        self.hex = Cal.changeRadix(self.dec, 16);
+        self.oct = Cal.changeRadix(self.dec, 8);
+        self.bin = Cal.changeRadix(self.dec, 2);
+        self.answer = self[self.mode];
+    }
+    // Mode
+    self.mode = 'dec';
+
+    self.changeMode = function (mode) {
+        self.mode = mode;
+        self.clearCE();
+    }
+
+    self.modeClass = function (mode) {
+        return {
+            focus: mode == self.mode,
+            blur: mode != self.mode
+        };
     }
 }
 

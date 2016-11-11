@@ -27,20 +27,20 @@
         <div class="header">Calculator</div>
         <div class="answer" ng-bind="CalCtrl.answer"></div>
         <div class="bases">
-            <div class="base">
-                <div class="base-name">Hex</div>
+            <div class="base" ng-class="CalCtrl.modeClass('hex')">
+                <div class="base-name" ng-click="CalCtrl.changeMode('hex')">Hex</div>
                 <div class="base-answer" ng-bind="CalCtrl.hex"></div>
             </div>
-            <div class="base">
-                <div class="base-name">DEC</div>
+            <div class="base" ng-class="CalCtrl.modeClass('dec')">
+                <div class="base-name" ng-click="CalCtrl.changeMode('dec')">DEC</div>
                 <div class="base-answer" ng-bind="CalCtrl.dec"></div>
             </div>
-            <div class="base">
-                <div class="base-name">OCT</div>
+            <div class="base" ng-class="CalCtrl.modeClass('oct')">
+                <div class="base-name" ng-click="CalCtrl.changeMode('oct')">OCT</div>
                 <div class="base-answer" ng-bind="CalCtrl.oct"></div>
             </div>
-            <div class="base">
-                <div class="base-name">BIN</div>
+            <div class="base" ng-class="CalCtrl.modeClass('bin')">
+                <div class="base-name" ng-click="CalCtrl.changeMode('bin')">BIN</div>
                 <div class="base-answer" ng-bind="CalCtrl.bin"></div>
             </div>
         </div>
@@ -49,7 +49,7 @@
                 <div class="button">
                     <div class="button-content">&nbsp;</div>
                 </div>
-                <div class="button">
+                <div class="button" ng-click="CalCtrl.enterOperator('%')">
                     <div class="button-content">Mod</div>
                 </div>
                 <div class="button" ng-click="CalCtrl.clearCE()">
@@ -66,19 +66,19 @@
                 </div>
             </div>
             <div class="row-buttons">
-                <div class="button">
+                <div class="button" ng-click="CalCtrl.enterOperand('a', CalCtrl.mode)">
                     <div class="button-content">A</div>
                 </div>
-                <div class="button">
+                <div class="button" ng-click="CalCtrl.enterOperand('b', CalCtrl.mode)">
                     <div class="button-content">B</div>
                 </div>
-                <div class="button" ng-click="CalCtrl.enterOperand('7')">
+                <div class="button" ng-click="CalCtrl.enterOperand('7', CalCtrl.mode)">
                     <div class="button-content">7</div>
                 </div>
-                <div class="button" ng-click="CalCtrl.enterOperand('8')">
+                <div class="button" ng-click="CalCtrl.enterOperand('8', CalCtrl.mode)">
                     <div class="button-content">8</div>
                 </div>
-                <div class="button" ng-click="CalCtrl.enterOperand('9')">
+                <div class="button" ng-click="CalCtrl.enterOperand('9', CalCtrl.mode)">
                     <div class="button-content">9</div>
                 </div>
                 <div class="button" ng-click="CalCtrl.enterOperator('*')">
@@ -86,19 +86,19 @@
                 </div>
             </div>
             <div class="row-buttons">
-                <div class="button">
+                <div class="button" ng-click="CalCtrl.enterOperand('c', CalCtrl.mode)">
                     <div class="button-content">C</div>
                 </div>
-                <div class="button">
+                <div class="button" ng-click="CalCtrl.enterOperand('d', CalCtrl.mode)">
                     <div class="button-content">D</div>
                 </div>
-                <div class="button" ng-click="CalCtrl.enterOperand('4')">
+                <div class="button" ng-click="CalCtrl.enterOperand('4', CalCtrl.mode)">
                     <div class="button-content">4</div>
                 </div>
-                <div class="button" ng-click="CalCtrl.enterOperand('5')">
+                <div class="button" ng-click="CalCtrl.enterOperand('5', CalCtrl.mode)">
                     <div class="button-content">5</div>
                 </div>
-                <div class="button" ng-click="CalCtrl.enterOperand('6')">
+                <div class="button" ng-click="CalCtrl.enterOperand('6', CalCtrl.mode)">
                     <div class="button-content">6</div>
                 </div>
                 <div class="button">
@@ -106,19 +106,19 @@
                 </div>
             </div>
             <div class="row-buttons">
-                <div class="button">
+                <div class="button" ng-click="CalCtrl.enterOperand('e', CalCtrl.mode)">
                     <div class="button-content">E</div>
                 </div>
-                <div class="button">
+                <div class="button" ng-click="CalCtrl.enterOperand('f', CalCtrl.mode)">
                     <div class="button-content">F</div>
                 </div>
-                <div class="button" ng-click="CalCtrl.enterOperand('1')">
+                <div class="button" ng-click="CalCtrl.enterOperand('1', CalCtrl.mode)">
                     <div class="button-content">1</div>
                 </div>
-                <div class="button" ng-click="CalCtrl.enterOperand('2')">
+                <div class="button" ng-click="CalCtrl.enterOperand('2', CalCtrl.mode)">
                     <div class="button-content">2</div>
                 </div>
-                <div class="button" ng-click="CalCtrl.enterOperand('3')">
+                <div class="button" ng-click="CalCtrl.enterOperand('3', CalCtrl.mode)">
                     <div class="button-content">3</div>
                 </div>
                 <div class="button" ng-click="CalCtrl.enterOperator('+')">
@@ -132,13 +132,13 @@
                 <div class="button">
                     <div class="button-content">&nbsp;</div>
                 </div>
-                <div class="button" ng-click="CalCtrl.enterOperand('neg')">
+                <div class="button" ng-click="CalCtrl.enterOperand('neg', CalCtrl.mode)">
                     <div class="button-content">&#177</div>
                 </div>
-                <div class="button" ng-click="CalCtrl.enterOperand('0')">
+                <div class="button" ng-click="CalCtrl.enterOperand('0', CalCtrl.mode)">
                     <div class="button-content">0</div>
                 </div>
-                <div class="button" ng-click="CalCtrl.enterOperator('%')">
+                <div class="button">
                     <div class="button-content">%</div>
                 </div>
                 <div class="button" ng-click="CalCtrl.calculate()">

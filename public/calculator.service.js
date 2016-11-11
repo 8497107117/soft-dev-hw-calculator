@@ -37,24 +37,50 @@ var CalculatorService = function () {
         isCalculated = false;
     }
 
-    self.updateExpression = function () {
-        if (operand[0] == undefined) {
-            return input;
-        }
-        expression = operand[0];
-        for (var i = 0; i < operator.length; i++) {
-            if (operand[i + 1] != undefined) {
-                expression = expression + operator[i] + operand[i + 1];
+    self.updateExpression = function (radix) {
+        if (radix == undefined || radix == 10) {
+            if (operand[0] == undefined) {
+                return input;
             }
-            else {
-                expression += operator[i];
+            expression = operand[0];
+            for (var i = 0; i < operator.length; i++) {
+                if (operand[i + 1] != undefined) {
+                    expression = expression + operator[i] + operand[i + 1];
+                }
+                else {
+                    expression += operator[i];
+                }
             }
+            return expression + input;
         }
-
-        return expression + input;
+        else {
+            if (operand[0] == undefined) {
+                return input;
+            }
+            expression = parseInt(operand[0], radix).toString(10);
+            for (var i = 0; i < operator.length; i++) {
+                if (operand[i + 1] != undefined) {
+                    expression = expression + operator[i] + parseInt(operand[i + 1], radix).toString(10);
+                }
+                else {
+                    expression += operator[i];
+                }
+            }
+            return expression + parseInt(input, radix).toString(10);
+        }
     }
 
-    self.enterOperand = function (op) {
+    self.enterOperand = function (op, mode) {
+        // avoid input
+        if (mode == 'dec' && op >= 'a' && op <= 'f') {
+            return;
+        }
+        else if (mode == 'oct' && (op >= 'a' && op <= 'f' || op == '8' || op == '9')) {
+            return;
+        }
+        else if (mode == 'bin' && (op != '0' && op != '1' && op != 'neg')) {
+            return;
+        }
         // change state
         if (state == 'operator') {
             state = 'operand';
@@ -126,14 +152,25 @@ var CalculatorService = function () {
         }
     }
 
-    self.calculate = function () {
+    self.calculate = function (mode) {
         // change state
         if (state == 'operand') {
             operand.push(input);
         }
         state = 'operand';
         // update expression to view
-        self.updateExpression();
+        if (mode == 'hex') {
+            self.updateExpression(16);
+        }
+        else if (mode == 'dec') {
+            self.updateExpression(10);
+        }
+        else if (mode == 'oct') {
+            self.updateExpression(8);
+        }
+        else if (mode == 'bin') {
+            self.updateExpression(2);
+        }
         // answer & clear
         answer = eval(expression).toString();
         operand = [];
