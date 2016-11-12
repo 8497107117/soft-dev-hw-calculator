@@ -164,25 +164,15 @@ var CalculatorService = function () {
         }
         state = 'operand';
         // update expression to view
-        if (mode == 'hex') {
-            self.updateExpression(16);
-        }
-        else if (mode == 'dec') {
-            self.updateExpression(10);
-        }
-        else if (mode == 'oct') {
-            self.updateExpression(8);
-        }
-        else if (mode == 'bin') {
-            self.updateExpression(2);
-        }
+        var radix = mode == 'hex' ? 16 : mode == 'dec' ? 10 : mode == 'oct' ? 8 : 2;
+        self.updateExpression(radix);
         // answer & clear
         answer = eval(expression).toString();
         operand = [];
         operator = [];
         expression = answer;
         isCalculated = true;
-        input = answer;
+        input = parseInt(answer, 10).toString(radix);
 
         return answer;
     }
