@@ -107,11 +107,16 @@ var CalculatorService = function () {
             if (input == '0') {
                 ;
             }
-            // - -> + 
+            // + -> - 
             else if (input.indexOf('-') < 0) {
-                input = '-' + input;
+                if (operator.length > 0 && operator[operator.length - 1] == '-') {
+                    operator[operator.length - 1] = '+';
+                }
+                else {
+                    input = '-' + input;
+                }
             }
-            // + -> -
+            // - -> +
             else {
                 input = input.substr(1, input.length - 1);
             }
@@ -184,6 +189,15 @@ var CalculatorService = function () {
 
     self.changeRadix = function (s, radix) {
         return (+s).toString(radix);
+    }
+
+    self.changeMode = function (oldMode, newMode) {
+        var oldRadix = oldMode == 'hex' ? 16 : oldMode == 'dec' ? 10 : oldMode == 'oct' ? 8 : 2;
+        var newRadix = newMode == 'hex' ? 16 : newMode == 'dec' ? 10 : newMode == 'oct' ? 8 : 2;
+        for (var i = 0; i < operand.length; i++) {
+            operand[i] = parseInt(operand[i], oldRadix).toString(newRadix);
+        }
+        input = parseInt(input, oldRadix).toString(newRadix);
     }
 
     return self;

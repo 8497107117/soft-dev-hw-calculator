@@ -49,8 +49,9 @@ var CalculatorController = function (CalculatorService) {
     self.mode = 'dec';
 
     self.changeMode = function (mode) {
+        Cal.changeMode(self.mode, mode);
         self.mode = mode;
-        self.clearCE();
+        self.answer = Cal.updateExpression();
     }
 
     self.modeClass = function (mode) {
