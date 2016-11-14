@@ -12,8 +12,8 @@ var CalculatorService = function () {
 
     var self = this;
 
-    self.clearC = function () {
-        // only clearC the operand
+    self.clearCE = function () {
+        // only clearCE the operand
         if (state == 'operand') {
             if (operand.length > 0) {
                 state = 'operator';
@@ -27,7 +27,7 @@ var CalculatorService = function () {
         }
     }
 
-    self.clearCE = function () {
+    self.clearC = function () {
         expression = '0';
         operand = [];
         operator = [];

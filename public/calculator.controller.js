@@ -7,13 +7,13 @@ var CalculatorController = function (CalculatorService) {
     var Cal = CalculatorService;
 
     // Clear
-    self.clearC = function () {
-        Cal.clearC();
+    self.clearCE = function () {
+        Cal.clearCE();
         self.answer = Cal.updateExpression();
     }
 
-    self.clearCE = function () {
-        Cal.clearCE();
+    self.clearC = function () {
+        Cal.clearC();
         self.answer = Cal.updateExpression();
         self.dec = self.answer;
         self.hex = Cal.changeRadix(self.answer, 16);
@@ -21,7 +21,7 @@ var CalculatorController = function (CalculatorService) {
         self.bin = Cal.changeRadix(self.answer, 2);
     }
     // initiallize
-    self.clearCE();
+    self.clearC();
     // Input
     self.enterOperand = function (op, mode) {
         Cal.enterOperand(op, mode);
