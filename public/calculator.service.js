@@ -38,7 +38,7 @@ var CalculatorService = function () {
     }
 
     self.updateExpression = function (radix) {
-        if (radix == undefined || radix == 10) {
+        if (radix == undefined) {
             if (operand[0] == undefined) {
                 return input;
             }
@@ -70,17 +70,7 @@ var CalculatorService = function () {
         }
     }
 
-    self.enterOperand = function (op, mode) {
-        // avoid input
-        if (mode == 'dec' && op >= 'a' && op <= 'f') {
-            return;
-        }
-        else if (mode == 'oct' && (op >= 'a' && op <= 'f' || op == '8' || op == '9')) {
-            return;
-        }
-        else if (mode == 'bin' && (op != '0' && op != '1' && op != 'neg')) {
-            return;
-        }
+    self.enterOperand = function (op) {
         // change state
         if (state == 'operator') {
             state = 'operand';
@@ -157,14 +147,13 @@ var CalculatorService = function () {
         }
     }
 
-    self.calculate = function (mode) {
+    self.calculate = function (radix) {
         // change state
         if (state == 'operand') {
             operand.push(input);
         }
         state = 'operand';
         // update expression to view
-        var radix = mode == 'hex' ? 16 : mode == 'dec' ? 10 : mode == 'oct' ? 8 : 2;
         self.updateExpression(radix);
         // answer & clear
         answer = eval(expression).toString();
@@ -181,9 +170,7 @@ var CalculatorService = function () {
         return (+s).toString(radix);
     }
 
-    self.changeMode = function (oldMode, newMode) {
-        var oldRadix = oldMode == 'hex' ? 16 : oldMode == 'dec' ? 10 : oldMode == 'oct' ? 8 : 2;
-        var newRadix = newMode == 'hex' ? 16 : newMode == 'dec' ? 10 : newMode == 'oct' ? 8 : 2;
+    self.changeMode = function (oldRadix, newRadix) {
         for (var i = 0; i < operand.length; i++) {
             operand[i] = parseInt(operand[i], oldRadix).toString(newRadix);
         }
