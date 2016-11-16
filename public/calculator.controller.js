@@ -6,15 +6,15 @@ var CalculatorController = function(CalculatorService) {
 
     var Cal = CalculatorService;
 
-    // Radix
-    self.radix = { 'hex': 16, 'dec': 10, 'oct': 8, 'bin': 2 };
+    // Base
+    self.base = { 'hex': 16, 'dec': 10, 'oct': 8, 'bin': 2 };
     // Mode
     self.mode = 'dec';
 
     self.changeMode = function(mode) {
-        Cal.changeMode(self.radix[self.mode], self.radix[mode]);
+        Cal.changeMode(self.base[self.mode], self.base[mode]);
         self.mode = mode;
-        self.answer = Cal.updateExpression();
+        self.answer = Cal.updateExpression(self.base[self.mode]);
     }
 
     self.modeClass = function(mode) {
@@ -26,16 +26,16 @@ var CalculatorController = function(CalculatorService) {
     // Clear
     self.clearCE = function() {
         Cal.clearCE();
-        self.answer = Cal.updateExpression();
+        self.answer = Cal.updateExpression(self.base[self.mode]);
     }
 
     self.clearC = function() {
         Cal.clearC();
-        self.answer = Cal.updateExpression();
+        self.answer = Cal.updateExpression(self.base[self.mode]);
         self.dec = self.answer;
-        self.hex = Cal.changeRadix(self.answer, 16);
-        self.oct = Cal.changeRadix(self.answer, 8);
-        self.bin = Cal.changeRadix(self.answer, 2);
+        self.hex = Cal.changeBase(self.answer, 10, 16);
+        self.oct = Cal.changeBase(self.answer, 10, 8);
+        self.bin = Cal.changeBase(self.answer, 10, 2);
     }
     // initiallize
     self.clearC();
@@ -58,24 +58,24 @@ var CalculatorController = function(CalculatorService) {
 
     self.enterOperand = function(op) {
         Cal.enterOperand(op);
-        self.answer = Cal.updateExpression();
+        self.answer = Cal.updateExpression(self.base[self.mode]);
     }
 
     self.enterOperator = function(op) {
         Cal.enterOperator(op);
-        self.answer = Cal.updateExpression();
+        self.answer = Cal.updateExpression(self.base[self.mode]);
     }
 
     self.backspace = function() {
         Cal.backspace();
-        self.answer = Cal.updateExpression();
+        self.answer = Cal.updateExpression(self.base[self.mode]);
     }
 
     self.calculate = function() {
-        self.dec = Cal.calculate(self.radix[self.mode]);
-        self.hex = Cal.changeRadix(self.dec, 16);
-        self.oct = Cal.changeRadix(self.dec, 8);
-        self.bin = Cal.changeRadix(self.dec, 2);
+        self.dec = Cal.calculate(self.base[self.mode]);
+        self.hex = Cal.changeBase(self.dec, 10, 16);
+        self.oct = Cal.changeBase(self.dec, 10, 8);
+        self.bin = Cal.changeBase(self.dec, 10, 2);
         self.answer = self[self.mode];
     }
 }

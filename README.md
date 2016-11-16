@@ -15,27 +15,25 @@
 
 # How it work?
 
-- Negative Number
-
 - Basic Arithmetic
 
-	- ``+``
-    - ``-``
-    - ``*``
-    - ``/``
+	- ``+`` : plus
+    - ``-`` : minus
+    - ``*`` : multiple
+    - ``/`` : divide
 
 - Further Arithmetic
 
-	- ``%``
+	- ``Mod`` : remainder
 
-- Different radix
+- Different base
 
 	- Hexadecimal
 	- Decimal
 	- Octal
 	- Binary
     
-    Click the word will change radix.
+    Click the word will change base.
 
 - Operator Precedence
 
@@ -44,10 +42,18 @@
 	In windows, ``1+2*3`` will be ``(1+2)*3 = 9``
 	But in my calculator it will be ``1+2*3 = 7``
 
+- Negative Number
+
+	Negative number, like -10, stored in calculator is '-10'
+	And showed in view is 'FFF6' 
+
 - Backspace ``<-``
 
 	Only can backspace the operand. 
 	Can't backspace the operator.
+
+	Negative number that you see 'FFF6' is '-10,
+	so it will change to '-1'. Not 'FFF'.
 
 - Clear `C` `CE`
 
